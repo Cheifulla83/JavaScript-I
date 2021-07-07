@@ -68,7 +68,7 @@ console.log(antonietta.gender)
 // ==== Challenge 3: Object Methods ==== 
 // Give Kennan the ability to say "Hello, my name is Kennan!" Use the console.log provided as a hint.
 kennan.speak = function () {
-  console.log("Hello, my name is Kennan!" )
+  console.log(`Hello, my name is ${this.name}!` )
 }
 console.log(kennan.speak());
 
@@ -86,17 +86,38 @@ console.log(antonietta.multiplyNums(3,4));
 // 2. Nest a child object in the parent object with name and age as well.  The name will be George and the age will be 50.
 // 3. Nest a grandchild object in the child object with properties for name and age.  The name will be Sam and the age will be 30
 // 4. Give each of the objects the ability to speak their names using the this keyword.
-
-const parent = {}
+const name = {}
+const parent = {
+  name: "Susan",
+  age: 70,
+  speak: function(){
+    return `Hi! My name is ${this.name}`
+  },
+  child: {
+    name: "George",
+    age: 50,
+    speak: function(){
+      return `Hi! My name is ${this.name}`
+    },
+    grandchild: {
+      name: "Sam",
+      age: 30,
+      speak: function(){
+        return `Hi! My name is ${this.name}`
+      }
+    }
+  }
+}
 
 // Log the parent object's name
-
+console.log(parent.name)
 // Log the child's age
-
+console.log(parent.child.name)
 // Log the name and age of the grandchild
-
+console.log(parent.child.grandchild.name)
 // Have the parent speak
-
+console.log(parent.speak())
 // Have the child speak
-
+console.log(parent.child.speak())
 // Have the grandchild speak
+console.log(parent.child.grandchild.speak())
